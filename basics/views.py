@@ -20,6 +20,16 @@ def signup(request):
     return render(request,'signup.html')
 
 def logins(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        print("------------------username")
+        print("---------------------password")
+        myuser = authenticate(username=username,password=password)
+        
+        if myuser:
+            login(request,myuser)
+            return redirect('welcome_page')
     return render(request,'logins.html')
 
 def welcome_page(request):
