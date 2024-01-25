@@ -34,3 +34,7 @@ def logins(request):
 
 def welcome_page(request):
     return render(request,'welcome_page.html')
+
+def signout(request):
+    logout(request)
+    return redirect('index')
